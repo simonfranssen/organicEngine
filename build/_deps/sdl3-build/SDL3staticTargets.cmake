@@ -7,7 +7,7 @@ if(CMAKE_VERSION VERSION_LESS "2.8.3")
    message(FATAL_ERROR "CMake >= 2.8.3 required")
 endif()
 cmake_policy(PUSH)
-cmake_policy(VERSION 2.8.3...4.2)
+cmake_policy(VERSION 2.8.3...4.3)
 #----------------------------------------------------------------
 # Generated CMake target import file.
 #----------------------------------------------------------------
@@ -62,7 +62,7 @@ set_target_properties(SDL3::SDL3-static PROPERTIES
 set_property(TARGET SDL3::SDL3-static APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(SDL3::SDL3-static PROPERTIES
   IMPORTED_LINK_INTERFACE_LANGUAGES_DEBUG "C;OBJC"
-  IMPORTED_LOCATION_DEBUG "/Users/simon/Documents/organicEngine/build/_deps/sdl3-build/libSDL3.a"
+  IMPORTED_LOCATION_DEBUG "/Users/simonfransson/Documents/organicEngine/build/_deps/sdl3-build/libSDL3.a"
   )
 
 # Make sure the targets which have been exported in some other

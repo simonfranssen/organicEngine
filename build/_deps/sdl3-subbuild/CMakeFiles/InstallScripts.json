@@ -1,7 +1,7 @@
 {
 	"InstallScripts" : 
 	[
-		"/Users/simon/Documents/organicEngine/build/_deps/sdl3-subbuild/cmake_install.cmake"
+		"/Users/simonfransson/Documents/organicEngine/build/_deps/sdl3-subbuild/cmake_install.cmake"
 	],
 	"Parallel" : false
 }

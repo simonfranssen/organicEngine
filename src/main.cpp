@@ -3,6 +3,7 @@
 #include "SDL3/SDL_video.h"
 #include <SDL3/SDL.h>
 #include <SDL3/SDL_gpu.h>
+#include "../Engine/Renderer/Renderer.h"
 
 #include <iostream>
 
@@ -60,6 +61,14 @@ int main()
         return 1;
     }
 
+    Renderer renderObj(gpuDevice,  window);
+
+    if (!renderObj.Initialize())
+    {
+        std::cerr << "Render init failed: "
+                  << SDL_GetError() << '\n';
+        return 1;
+    }
 
     bool running = true;
     SDL_Event event;
@@ -71,77 +80,7 @@ int main()
             if (event.type == SDL_EVENT_QUIT)
                 running = false;
         }
-
-        // Acquire command buffer
-        SDL_GPUCommandBuffer* commandBuffer =
-            SDL_AcquireGPUCommandBuffer(gpuDevice);
-
-        if (commandBuffer == nullptr)
-        {
-            std::cerr << "Command buffer acquisition failed: "
-                      << SDL_GetError() << '\n';
-            break;
-        }
-
-        // Acquire swapchain texture
-        SDL_GPUTexture* swapchainTexture = nullptr;
-
-        if (!SDL_WaitAndAcquireGPUSwapchainTexture(
-                commandBuffer,
-                window,
-                &swapchainTexture,
-                nullptr,
-                nullptr))
-        {
-            std::cerr << "Swapchain acquisition failed: "
-                      << SDL_GetError() << '\n';
-
-            SDL_CancelGPUCommandBuffer(commandBuffer);
-            break;
-        }
-
-        // Window may be minimized
-        if (swapchainTexture == nullptr)
-        {
-            SDL_CancelGPUCommandBuffer(commandBuffer);
-            continue;
-        }
-        // 6. Configure color target
-        SDL_GPUColorTargetInfo colorTarget = {};
-
-        colorTarget.texture = swapchainTexture;
-
-        colorTarget.clear_color = {
-            0.08f,  // Red
-            0.15f,  // Green
-            0.35f,  // Blue
-            1.0f    // Alpha
-        };
-
-        colorTarget.load_op = SDL_GPU_LOADOP_CLEAR;
-        colorTarget.store_op = SDL_GPU_STOREOP_STORE;
-
-        // 7. Begin render pass
-        SDL_GPURenderPass* renderPass =
-            SDL_BeginGPURenderPass(
-                commandBuffer,
-                &colorTarget,
-                1,
-                nullptr
-            );
-
-        // We have no draw calls yet.
-        // The render pass only clears the screen.
-
-        SDL_EndGPURenderPass(renderPass);
-
-        // 8. Submit commands to GPU
-        if (!SDL_SubmitGPUCommandBuffer(commandBuffer))
-        {
-            std::cerr << "GPU submission failed: "
-                      << SDL_GetError() << '\n';
-            break;
-        }
+        renderObj.Render();
     }
 
 

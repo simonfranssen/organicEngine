@@ -1,8 +1,8 @@
-/Users/simon/Documents/organicEngine/build/CMakeFiles/MyEngine.dir
-/Users/simon/Documents/organicEngine/build/CMakeFiles/edit_cache.dir
-/Users/simon/Documents/organicEngine/build/CMakeFiles/rebuild_cache.dir
-/Users/simon/Documents/organicEngine/build/_deps/sdl3-build/CMakeFiles/SDL3-static.dir
-/Users/simon/Documents/organicEngine/build/_deps/sdl3-build/CMakeFiles/SDL3_test.dir
-/Users/simon/Documents/organicEngine/build/_deps/sdl3-build/CMakeFiles/SDL_uclibc.dir
-/Users/simon/Documents/organicEngine/build/_deps/sdl3-build/CMakeFiles/edit_cache.dir
-/Users/simon/Documents/organicEngine/build/_deps/sdl3-build/CMakeFiles/rebuild_cache.dir
+/Users/simonfransson/Documents/organicEngine/build/CMakeFiles/MyEngine.dir
+/Users/simonfransson/Documents/organicEngine/build/CMakeFiles/edit_cache.dir
+/Users/simonfransson/Documents/organicEngine/build/CMakeFiles/rebuild_cache.dir
+/Users/simonfransson/Documents/organicEngine/build/_deps/sdl3-build/CMakeFiles/SDL3-static.dir
+/Users/simonfransson/Documents/organicEngine/build/_deps/sdl3-build/CMakeFiles/SDL3_test.dir
+/Users/simonfransson/Documents/organicEngine/build/_deps/sdl3-build/CMakeFiles/SDL_uclibc.dir
+/Users/simonfransson/Documents/organicEngine/build/_deps/sdl3-build/CMakeFiles/edit_cache.dir
+/Users/simonfransson/Documents/organicEngine/build/_deps/sdl3-build/CMakeFiles/rebuild_cache.dir

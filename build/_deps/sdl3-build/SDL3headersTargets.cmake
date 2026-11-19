@@ -7,7 +7,7 @@ if(CMAKE_VERSION VERSION_LESS "3.0.0")
    message(FATAL_ERROR "CMake >= 3.0.0 required")
 endif()
 cmake_policy(PUSH)
-cmake_policy(VERSION 3.0.0...4.2)
+cmake_policy(VERSION 3.0.0...4.3)
 #----------------------------------------------------------------
 # Generated CMake target import file.
 #----------------------------------------------------------------
@@ -50,7 +50,7 @@ unset(_cmake_expected_targets)
 add_library(SDL3::Headers INTERFACE IMPORTED)
 
 set_target_properties(SDL3::Headers PROPERTIES
-  INTERFACE_INCLUDE_DIRECTORIES "/Users/simon/Documents/organicEngine/build/_deps/sdl3-build/include-revision;/Users/simon/Documents/organicEngine/build/_deps/sdl3-src/include"
+  INTERFACE_INCLUDE_DIRECTORIES "/Users/simonfransson/Documents/organicEngine/build/_deps/sdl3-build/include-revision;/Users/simonfransson/Documents/organicEngine/build/_deps/sdl3-src/include"
 )
 
 # This file does not depend on other imported targets which have

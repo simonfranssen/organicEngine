@@ -3,11 +3,11 @@
 
 cmake_minimum_required(VERSION ${CMAKE_VERSION}) # this file comes with cmake
 
-if(EXISTS "/Users/simon/Documents/organicEngine/build/_deps/sdl3-subbuild/sdl3-populate-prefix/src/sdl3-populate-stamp/sdl3-populate-gitclone-lastrun.txt" AND EXISTS "/Users/simon/Documents/organicEngine/build/_deps/sdl3-subbuild/sdl3-populate-prefix/src/sdl3-populate-stamp/sdl3-populate-gitinfo.txt" AND
-  "/Users/simon/Documents/organicEngine/build/_deps/sdl3-subbuild/sdl3-populate-prefix/src/sdl3-populate-stamp/sdl3-populate-gitclone-lastrun.txt" IS_NEWER_THAN "/Users/simon/Documents/organicEngine/build/_deps/sdl3-subbuild/sdl3-populate-prefix/src/sdl3-populate-stamp/sdl3-populate-gitinfo.txt")
+if(EXISTS "/Users/simonfransson/Documents/organicEngine/build/_deps/sdl3-subbuild/sdl3-populate-prefix/src/sdl3-populate-stamp/sdl3-populate-gitclone-lastrun.txt" AND EXISTS "/Users/simonfransson/Documents/organicEngine/build/_deps/sdl3-subbuild/sdl3-populate-prefix/src/sdl3-populate-stamp/sdl3-populate-gitinfo.txt" AND
+  "/Users/simonfransson/Documents/organicEngine/build/_deps/sdl3-subbuild/sdl3-populate-prefix/src/sdl3-populate-stamp/sdl3-populate-gitclone-lastrun.txt" IS_NEWER_THAN "/Users/simonfransson/Documents/organicEngine/build/_deps/sdl3-subbuild/sdl3-populate-prefix/src/sdl3-populate-stamp/sdl3-populate-gitinfo.txt")
   message(VERBOSE
     "Avoiding repeated git clone, stamp file is up to date: "
-    "'/Users/simon/Documents/organicEngine/build/_deps/sdl3-subbuild/sdl3-populate-prefix/src/sdl3-populate-stamp/sdl3-populate-gitclone-lastrun.txt'"
+    "'/Users/simonfransson/Documents/organicEngine/build/_deps/sdl3-subbuild/sdl3-populate-prefix/src/sdl3-populate-stamp/sdl3-populate-gitclone-lastrun.txt'"
   )
   return()
 endif()
@@ -22,12 +22,12 @@ else()
 endif()
 
 execute_process(
-  COMMAND ${CMAKE_COMMAND} -E rm -rf "/Users/simon/Documents/organicEngine/build/_deps/sdl3-src"
+  COMMAND ${CMAKE_COMMAND} -E rm -rf "/Users/simonfransson/Documents/organicEngine/build/_deps/sdl3-src"
   RESULT_VARIABLE error_code
   ${maybe_show_command}
 )
 if(error_code)
-  message(FATAL_ERROR "Failed to remove directory: '/Users/simon/Documents/organicEngine/build/_deps/sdl3-src'")
+  message(FATAL_ERROR "Failed to remove directory: '/Users/simonfransson/Documents/organicEngine/build/_deps/sdl3-src'")
 endif()
 
 # try the clone 1 + N times in case there is an odd git clone issue
@@ -42,7 +42,7 @@ while(error_code AND number_of_tries LESS ${max_tries})
   execute_process(
     COMMAND "/usr/bin/git"
             clone --no-checkout --depth 1 --no-single-branch --config "advice.detachedHead=false" "https://github.com/libsdl-org/SDL.git" "sdl3-src"
-    WORKING_DIRECTORY "/Users/simon/Documents/organicEngine/build/_deps"
+    WORKING_DIRECTORY "/Users/simonfransson/Documents/organicEngine/build/_deps"
     RESULT_VARIABLE error_code
     ${maybe_show_command}
   )
@@ -58,7 +58,7 @@ endif()
 execute_process(
   COMMAND "/usr/bin/git"
           checkout "release-3.2.0" --
-  WORKING_DIRECTORY "/Users/simon/Documents/organicEngine/build/_deps/sdl3-src"
+  WORKING_DIRECTORY "/Users/simonfransson/Documents/organicEngine/build/_deps/sdl3-src"
   RESULT_VARIABLE error_code
   ${maybe_show_command}
 )
@@ -71,22 +71,22 @@ if(init_submodules)
   execute_process(
     COMMAND "/usr/bin/git" 
             submodule update --recursive --init 
-    WORKING_DIRECTORY "/Users/simon/Documents/organicEngine/build/_deps/sdl3-src"
+    WORKING_DIRECTORY "/Users/simonfransson/Documents/organicEngine/build/_deps/sdl3-src"
     RESULT_VARIABLE error_code
     ${maybe_show_command}
   )
 endif()
 if(error_code)
-  message(FATAL_ERROR "Failed to update submodules in: '/Users/simon/Documents/organicEngine/build/_deps/sdl3-src'")
+  message(FATAL_ERROR "Failed to update submodules in: '/Users/simonfransson/Documents/organicEngine/build/_deps/sdl3-src'")
 endif()
 
 # Complete success, update the script-last-run stamp file:
 #
 execute_process(
-  COMMAND ${CMAKE_COMMAND} -E copy "/Users/simon/Documents/organicEngine/build/_deps/sdl3-subbuild/sdl3-populate-prefix/src/sdl3-populate-stamp/sdl3-populate-gitinfo.txt" "/Users/simon/Documents/organicEngine/build/_deps/sdl3-subbuild/sdl3-populate-prefix/src/sdl3-populate-stamp/sdl3-populate-gitclone-lastrun.txt"
+  COMMAND ${CMAKE_COMMAND} -E copy "/Users/simonfransson/Documents/organicEngine/build/_deps/sdl3-subbuild/sdl3-populate-prefix/src/sdl3-populate-stamp/sdl3-populate-gitinfo.txt" "/Users/simonfransson/Documents/organicEngine/build/_deps/sdl3-subbuild/sdl3-populate-prefix/src/sdl3-populate-stamp/sdl3-populate-gitclone-lastrun.txt"
   RESULT_VARIABLE error_code
   ${maybe_show_command}
 )
 if(error_code)
-  message(FATAL_ERROR "Failed to copy script-last-run stamp file: '/Users/simon/Documents/organicEngine/build/_deps/sdl3-subbuild/sdl3-populate-prefix/src/sdl3-populate-stamp/sdl3-populate-gitclone-lastrun.txt'")
+  message(FATAL_ERROR "Failed to copy script-last-run stamp file: '/Users/simonfransson/Documents/organicEngine/build/_deps/sdl3-subbuild/sdl3-populate-prefix/src/sdl3-populate-stamp/sdl3-populate-gitclone-lastrun.txt'")
 endif()

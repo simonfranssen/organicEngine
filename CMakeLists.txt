@@ -31,6 +31,7 @@ FetchContent_MakeAvailable(SDL3)
 # Engine executable
 add_executable(MyEngine
     src/main.cpp
+    Engine/Renderer/Renderer.cpp
 )
 
 target_link_libraries(MyEngine PRIVATE SDL3::SDL3)
