@@ -1,3 +1,4 @@
+
 cmake_minimum_required(VERSION 3.25)
 
 project(OrganicEngine
@@ -5,14 +6,22 @@ project(OrganicEngine
     LANGUAGES CXX
 )
 
-# Use C++20
+# --------------------------------------------------
+# C++ Configuration
+# --------------------------------------------------
+
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
-# SDL3 configuration
+
+# --------------------------------------------------
+# Dependencies
+# --------------------------------------------------
+
 include(FetchContent)
 
+# SDL3 configuration
 set(SDL_SHARED OFF CACHE BOOL "" FORCE)
 set(SDL_STATIC ON CACHE BOOL "" FORCE)
 set(SDL_TESTS OFF CACHE BOOL "" FORCE)
@@ -28,15 +37,42 @@ FetchContent_Declare(
 
 FetchContent_MakeAvailable(SDL3)
 
-# Engine executable
+
+# SDL_shadercross configuration
+set(SDLSHADERCROSS_VENDORED ON CACHE BOOL "" FORCE)
+set(SDLSHADERCROSS_DXC ON CACHE BOOL "" FORCE)
+set(SDLSHADERCROSS_CLI ON CACHE BOOL "" FORCE)
+set(SDLSHADERCROSS_TESTS OFF CACHE BOOL "" FORCE)
+set(SDLSHADERCROSS_INSTALL OFF CACHE BOOL "" FORCE)
+
+FetchContent_Declare(
+    SDL_shadercross
+    GIT_REPOSITORY https://github.com/libsdl-org/SDL_shadercross.git
+    GIT_TAG main
+    GIT_SUBMODULES_RECURSE TRUE
+)
+
+FetchContent_MakeAvailable(SDL_shadercross)
+
+
+# --------------------------------------------------
+# Engine
+# --------------------------------------------------
+
 add_executable(MyEngine
     src/main.cpp
     Engine/Renderer/Renderer.cpp
 )
 
-target_link_libraries(MyEngine PRIVATE SDL3::SDL3)
+target_link_libraries(MyEngine PRIVATE
+    SDL3::SDL3
+)
 
-# Helpful compiler warnings
+
+# --------------------------------------------------
+# Compiler Warnings
+# --------------------------------------------------
+
 if(CMAKE_CXX_COMPILER_ID MATCHES "Clang|AppleClang|GNU")
     target_compile_options(MyEngine PRIVATE
         -Wall
