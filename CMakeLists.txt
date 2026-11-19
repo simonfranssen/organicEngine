@@ -52,6 +52,14 @@ FetchContent_Declare(
     GIT_SUBMODULES_RECURSE TRUE
 )
 
+if(TARGET SDL_shadercross)
+    message(STATUS "SDL_shadercross library found")
+endif()
+
+if(TARGET shadercross)
+    message(STATUS "shadercross CLI target found")
+endif()
+
 FetchContent_MakeAvailable(SDL_shadercross)
 
 
@@ -80,3 +88,4 @@ if(CMAKE_CXX_COMPILER_ID MATCHES "Clang|AppleClang|GNU")
         -Wpedantic
     )
 endif()
+
