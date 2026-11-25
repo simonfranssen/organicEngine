@@ -8,7 +8,7 @@
     --entrypoint main \
     --output build/Shaders/triangle.frag.msl
 
-    ./build/_deps/sdl_shadercross-build/shadercross \
+./build/_deps/sdl_shadercross-build/shadercross \
     Shaders/Source/triangle.vert.hlsl \
     --source HLSL \
     --dest MSL \

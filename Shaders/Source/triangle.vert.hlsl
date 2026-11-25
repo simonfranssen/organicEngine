@@ -17,7 +17,7 @@ cbuffer ConstantBuffer : register(b0, space1)
     matrix worldViewProj; //Combined world, view, and projection matrix
 };
 
-VS_OUTPUT main(VS_INPUT input)
+VS_OUTPUT vertexMain(VS_INPUT input)
 {
     VS_OUTPUT output;
     output.Position = mul(
