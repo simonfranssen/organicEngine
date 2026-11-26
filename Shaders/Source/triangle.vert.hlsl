@@ -1,29 +1,30 @@
-// Input structure
+
 struct VS_INPUT
 {
     float3 Position : POSITION;
-    float2 TexCoord : TEXCOORD1;
 };
 
-// Output structure
 struct VS_OUTPUT
 {
     float4 Position : SV_POSITION;
-    float2 TexCoord : TEXCOORD0;
 };
 
-cbuffer ConstantBuffer : register(b0, space1)
+// Data som skickas från CPU till vertex-shadern
+[[vk::binding(0, 1)]]
+cbuffer TimeUniform : register(b0, space0)
 {
-    matrix worldViewProj; //Combined world, view, and projection matrix
+    float time;
 };
 
 VS_OUTPUT vertexMain(VS_INPUT input)
 {
     VS_OUTPUT output;
-    output.Position = mul(
-        worldViewProj,
-        float4(input.Position, 1.0f)
-    );
-    output.TexCoord = input.TexCoord;
+
+    float3 position = input.Position;
+
+    position.x += sin(time) * 0.5f;
+
+    output.Position = float4(position, 1.0f);
+
     return output;
 }

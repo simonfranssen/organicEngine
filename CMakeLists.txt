@@ -19,6 +19,10 @@ include(cmake/CompilerOptions.cmake)
 add_executable(MyEngine
     src/main.cpp
     Engine/Renderer/Renderer.cpp
+    Engine/Renderer/Shader.cpp
+    Engine/Graphics/Mesh.cpp
+    Engine/Core/Gameclock.cpp
+    Engine/Core/Application.cpp
 )
 
 target_link_libraries(MyEngine PRIVATE
@@ -32,3 +36,7 @@ include(cmake/Shaders.cmake)
 
 # Compile shaders whenever the engine is built
 add_dependencies(MyEngine OrganicEngine_Shaders)
+
+target_compile_definitions(MyEngine PRIVATE
+    ORGANIC_ENGINE_SHADER_PATH="${METALLIB}"
+)

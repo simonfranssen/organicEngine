@@ -39,4 +39,4 @@ Detta dokument beskriver de olika stegen i renderingskedjan, från initialiserin
 
 ## Slutmål
 
-Renderingskedjan ska kunna rendera en triangel direkt i SDL-fönstret med hjälp av GPU:n.
+Renderingskedjan ska kunna rendera en triangel direkt i SDL-fönstret med hjälp av GPU:n. 

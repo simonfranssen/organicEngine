@@ -78,7 +78,7 @@ if(APPLE)
             --source HLSL
             --dest MSL
             --stage fragment
-            --entrypoint main
+            --entrypoint fragMain
             --output "${FRAGMENT_MSL}"
 
         # MSL -> AIR
